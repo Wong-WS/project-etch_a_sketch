@@ -16,3 +16,22 @@
     height: 30px;
     border: 1px solid gray;
 }
+
+.resetBtn {
+    background-color: red;
+    border: 3px solid black;
+    display: block; /* Set it as a block-level element */
+    width: fit-content; /* Set a fixed width if needed, or 'fit-content' to adjust to the content */
+    margin: 0 auto; /* Center horizontally */
+    text-align: center; /* Center the button's content horizontally */
+    padding: 10px 30px;
+}
+
+.newGrid {
+    border: 3px solid black;
+    display: block;
+    width: fit-content;
+    margin: 30px auto;
+    text-align: center;
+    padding: 10px auto;
+}
