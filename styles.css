@@ -1,0 +1,18 @@
+#container {
+    display: grid;
+    grid-template-columns: repeat(16, auto);
+    width: auto;
+    height: auto;
+    border: 3px solid black;
+    margin: 0 auto; 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#container > div {
+    width: 30px;
+    height: 30px;
+    border: 1px solid gray;
+}
