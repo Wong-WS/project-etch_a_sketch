@@ -6,6 +6,7 @@ function makeDivs(numDivs) {
     for (let d = 0; d < numDivs * numDivs; d++){
         let cell = document.createElement("div");
         cell.classList.add("cell");
+        adjustGridSize(numDivs);
         container.appendChild(cell);
         cell.addEventListener("mouseover", function () {
             this.style.backgroundColor = "black";
@@ -34,6 +35,7 @@ newGridBtn.addEventListener("click", () => {
         clearGrid();
         numDivs = newSize;
         makeDivs(numDivs);
+        adjustGridSize(numDivs);
     } else {
         alert("Please enter a value less than or equal to 100.");
     }
@@ -47,15 +49,13 @@ function clearGrid() {
         cell.remove();
     })
 }
-// function newDivs() {
-//     const newSize = prompt("Enter a number of squares per side (maximum 100) :");
-//     if (newSize <= 100) {
-//         resetDivs();
-//         numDivs = newSize;
-//         makeDivs(numDivs);
-//     } else {
-//         alert("Please enter a value less than or equal to 100.");
-//     }
-// }
 
-// newGridBtn.addEventListener("click", newDivs);
+function adjustGridSize(newSize) {
+    const cellSize = 600 / newSize;
+
+    const cellElement = document.querySelectorAll(".cell");
+    cellElement.forEach((cell) => {
+        cell.style.width = cellSize + "px";
+        cell.style.height = cellSize + "px";
+    });
+}
