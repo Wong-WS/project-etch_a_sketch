@@ -3,7 +3,7 @@ let numDivs = 16; // Initialize with default value
 
 //Hovers effect (works on black color only)//
 function makeDivs(numDivs) {
-    for (let d = 0; d < numDivs * numDivs; d++){
+    for (let d = 0; d <= numDivs * numDivs; d++){
         let cell = document.createElement("div");
         cell.classList.add("cell");
         adjustGridSize(numDivs);
