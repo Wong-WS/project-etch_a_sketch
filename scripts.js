@@ -1,23 +1,24 @@
 const container = document.getElementById("container");
+let numDivs = 16; // Initialize with default value
+
 //Hovers effect (works on black color only)//
 function makeDivs(numDivs) {
-    for (let d = 0; d < numDivs; d++){
-        let cells = document.createElement("div");
-        container.appendChild(cells)
-        cells.addEventListener("mouseover", function () {
+    for (let d = 0; d < numDivs * numDivs; d++){
+        let cell = document.createElement("div");
+        cell.classList.add("cell");
+        container.appendChild(cell);
+        cell.addEventListener("mouseover", function () {
             this.style.backgroundColor = "black";
         });
     }
 }
 
-makeDivs(256);
-
-
-const divs = document.querySelectorAll("div");
+makeDivs(numDivs);
 //Reset Divs to white colored background//
 function resetDivs() {
-    divs.forEach((div) => {
-        div.style.backgroundColor = "white";
+    const gridCells = document.querySelectorAll(".cell");
+    gridCells.forEach((cell) => {
+        cell.style.backgroundColor = "white";
     });
 }
 
@@ -25,8 +26,36 @@ const resetBtn = document.querySelector(".resetBtn");
 //Reset Divs button//
 resetBtn.addEventListener("click", resetDivs);
 
-const newGrid = document.querySelector(".newGrid");
+const newGridBtn = document.querySelector(".newGrid");
+//User Input for New Grid Box//
+newGridBtn.addEventListener("click", () => {
+    const newSize = prompt("Enter a number of squares per side (maximum 100):");
+    if (newSize <= 100) {
+        clearGrid();
+        numDivs = newSize;
+        makeDivs(numDivs);
+    } else {
+        alert("Please enter a value less than or equal to 100.");
+    }
+})
 
-// function newGrid() {
-    
+//Clear Grid//
+function clearGrid() {
+    const gridCells = document.querySelectorAll(".cell");
+    gridCells.forEach((cell) => {
+        cell.style.backgroundColor = "white";
+        cell.remove();
+    })
+}
+// function newDivs() {
+//     const newSize = prompt("Enter a number of squares per side (maximum 100) :");
+//     if (newSize <= 100) {
+//         resetDivs();
+//         numDivs = newSize;
+//         makeDivs(numDivs);
+//     } else {
+//         alert("Please enter a value less than or equal to 100.");
+//     }
 // }
+
+// newGridBtn.addEventListener("click", newDivs);
